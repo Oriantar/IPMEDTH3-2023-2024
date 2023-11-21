@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-entity>
+      <a-box position="0 0 -40" rotation="0 0 0" width="80" height="24" color="brown" ></a-box>
+      <a-box position="0 0 40" rotation="0 0 0" width="80" height="24" color="brown" ></a-box>
+      <a-box position="-40 0 0" rotation="0 90 0" width="80" height="24" color="brown" ></a-box>
+      <a-box position="40 0 0" rotation="0 90 0" width="80" height="24" color="brown" ></a-box>
+      <a-plane position="0 -5 0" rotation="90 0 0" width="80" height="-80" color="green" ></a-plane>
+      </a-entity>
+
+      <a-entity position="0 -4.4 0" scale="3 4 3" >
+        <a-box position="0 0 0" rotation="90 0 0" width="0.1" height="0.1" scale="1 1 2" src="Materials/Wood.jpg"></a-box>
+        <a-box position="0 0 -1.5" rotation="90 0 0" width="0.1" height="0.1" scale="1 1 2" src="Materials/Wood.jpg"></a-box>
+        <a-box position="2 0 0" rotation="90 0 0" width="0.1" height="0.1" scale="1 1 2" src="Materials/Wood.jpg"></a-box>
+        <a-box position="2 0 -1.5" rotation="90 0 0" width="0.1" height="0.1" scale="1 1 2" src="Materials/Wood.jpg"></a-box>
+        <a-box position="1 1 -0.75" rotation="90 0 0" width="2.5" height="2" scale="1 1 0.1" src="Materials/Metal.jpg"></a-box>
+      </a-entity>
+
+      <a-entity position="0 -4.4 15" scale="3 4 3" >
+        <a-box position="0 0 0" rotation="90 0 0" width="0.1" height="0.1" scale="1 1 2" color="white"></a-box>
+        <a-box position="0 0 -1.5" rotation="90 0 0" width="0.1" height="0.1" scale="1 1 2" color="white"></a-box>
+        <a-box position="2 0 0" rotation="90 0 0" width="0.1" height="0.1" scale="1 1 2" color="white"></a-box>
+        <a-box position="2 0 -1.5" rotation="90 0 0" width="0.1" height="0.1" scale="1 1 2" color="white"></a-box>
+        <a-box position="1 1 -0.75" rotation="90 0 0" width="2.5" height="2" scale="1 1 0.1" color="white"></a-box>
+      </a-entity>
+      <a-box position="0 -0.2 13" scale="1 0.1 1" color="brown"></a-box>
+      <a-box position="0 -0.1 13" scale="0.1 0.1 0.1" color="green"></a-box>
+
+      <a-sky src="Materials/Sky.jpg"></a-sky>
+
+<!--      <a-entity camera look-controls position="0 1 0">-->
+<!--        <a-entity cursor="fuse: true; fuseTimeout: 500"-->
+<!--                  position="0 0 -1"-->
+<!--                  geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"-->
+<!--                  material="color: white; shader: flat">-->
+<!--        </a-entity>-->
+<!--      </a-entity>-->
+    </a-scene>
+  </body>
+</html>
