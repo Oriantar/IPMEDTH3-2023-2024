@@ -21,7 +21,6 @@ window.onload = () =>{
             places[i].addEventListener('click', () => {
                 if (hold != null) {
                     place(hold, event.target);
-                    console.log(hold);
                 }
             })
         }
@@ -35,7 +34,6 @@ window.onload = () =>{
         box.setAttribute('position', {x: pos.x, y:"0.2", z: pos.z});
         box.setAttribute('class', 'js--clickable js--pickup');
         for (let i = 0; i < nodeMap.length; i++){
-            console.log(nodeMap[i].name);
             if(nodeMap[i].name == "position" || nodeMap[i].name == "class" || nodeMap[i].name == "material" || nodeMap[i].name == "geometry"){
                 continue;
             }
@@ -46,7 +44,6 @@ window.onload = () =>{
 
 
         scene.appendChild(box);
-        console.log(box)
         document.getElementsByClassName("js--hold").item(0).remove();
         hold = null;
         addListeners();
