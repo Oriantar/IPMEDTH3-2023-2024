@@ -5,7 +5,8 @@ window.onload = () =>{
     const camera = document.getElementById('js--camera');
     let scene = document.getElementById('js--scene')
     let hold = null;
-
+    var timer;
+    
 
 
     addListeners = () => {
@@ -25,6 +26,14 @@ window.onload = () =>{
             })
         }
     }
+    //timer maken
+    (function(){
+        var sec = 0;
+        timer = setInterval(()=>{
+            sec ++;
+            console.log(sec);
+        }, 1000) // elke seconde
+    })()
 
 
     place = (id, object) => {
