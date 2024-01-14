@@ -3,7 +3,9 @@ window.onload = () =>{
     const pickups = document.getElementsByClassName('js--pickup');
     const places = document.getElementsByClassName('js--place')
     const camera = document.getElementById('js--camera');
-    let scene = document.getElementById('js--scene')
+    let scene = document.getElementById('js--scene');
+    // const vlees = document.getElementById("js--vlees");
+    // const pepermolen = document.getElementById("js--pepermolen");
     let hold = null;
     var timer;
     
@@ -75,4 +77,20 @@ window.onload = () =>{
             hold = id;
     }
     addListeners();
+
+
+    // pepermolen.addEventListener('click', function(evt){
+    //  consolge.log("pepermolen has been clicked");
+    //  pickup(pepermolen_id, camera?)
+    // })
+
+    // vlees.addEventListener('click', function(evt){
+    //  console.log('vlees has been clicked');
+    //  if(pepermolen == hold){
+    //     vlees.setAttribute("src", vlees_gekruid.jpg)
+    // }
+    // })
+    
+
+
 };
