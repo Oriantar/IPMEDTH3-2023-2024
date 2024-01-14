@@ -79,10 +79,6 @@ window.onload = () =>{
     addListeners();
 
 
-    // pepermolen.addEventListener('click', function(evt){
-    //  consolge.log("pepermolen has been clicked");
-    //  pickup(pepermolen_id, camera?)
-    // })
 
     // vlees.addEventListener('click', function(evt){
     //  console.log('vlees has been clicked');
