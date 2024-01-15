@@ -35,31 +35,27 @@ window.onload = () =>{
         }, 1000) // elke seconde
     }
 
-    function vleesBakken(positie, box){
+    function vleesBakken(positie, box, tijd1, tijd2){
         if (positie == 0){
             (function(){
                 var sec = 0;
                 timer = setInterval(()=>{
                     sec ++;
                     console.log(sec);
-                    if(sec == 5){
+                    if(sec == tijd1){
                         box.setAttribute('color', 'brown');
-                        active = false;
-    
                     }
-                    if(sec == 10){
+                    if(sec == tijd2){
                         box.setAttribute('color', 'black');
-                        active = false;
+                        clearInterval(timer);
                     }
 
                 }, 1000) // elke seconde
                 
-            })()
-            
+            })()  
         }
-
-
     }
+
 
 
     place = (id, object) => {
@@ -80,7 +76,7 @@ window.onload = () =>{
 
     
         scene.appendChild(box);
-        vleesBakken(pos.z, box); //vlees wordt bruin/zwart na bepaalde tijd als het op de goede locatie geplaatst is.
+        vleesBakken(pos.z, box, 5, 10); //vlees wordt bruin/zwart na bepaalde tijd als het op de goede locatie geplaatst is.
         document.getElementsByClassName("js--hold").item(0).remove();
         hold = null;
         addListeners();
