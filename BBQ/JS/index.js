@@ -76,7 +76,7 @@ window.onload = () =>{
 
 
     place = (id, object) => {
-        let box = document.createElement('a-box');
+        let box = document.createElement('a-entity');
         let nodeMap = document.getElementById(id).attributes;
         let pos = object.getAttribute('position');
         console.log(pos.z);
@@ -111,7 +111,7 @@ window.onload = () =>{
                 }
                 text += nodeMap[i].name + "=" + "'" + nodeMap[i].value + "' ";
             }
-            let hoi = "<a-box " + text + "position='1 -1 -1'></a-box>";
+            let hoi = "<a-entity " + text + "position='1 -1 -1'></a-entity>";
             camera.innerHTML += hoi;
             hold = id;
     }

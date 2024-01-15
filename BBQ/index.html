@@ -5,6 +5,11 @@
   </head>
   <body>
     <a-scene id="js--scene">
+
+      <a-assets>
+        <a-asset-item id="steakRauw" src="./assets/steakRauw.gltf"></a-asset-item>
+      </a-assets>
+
       <a-entity>
       <a-box position="0 0 -40" rotation="0 0 0" width="80" height="24" color="brown" ></a-box>
       <a-box position="0 0 40" rotation="0 0 0" width="80" height="24" color="brown" ></a-box>
@@ -32,7 +37,8 @@
       <a-box class="js--clickable js--place" position="0 -0.2 0" scale="1 0.1 1" color="brown"></a-box>
 
       <a-box class="js--clickable js--place" position="0 -0.2 13" scale="1 0.1 1" color="brown"></a-box>
-      <a-box class="js--clickable js--pickup" id="testSalade" position="0 0.2 13"  color="red"></a-box>
+<!--      <a-box class="js&#45;&#45;clickable js&#45;&#45;pickup" id="testSalade" position="0 0.2 13"  color="red"></a-box>-->
+      <a-entity class="js--clickable js--pickup" id="#steakRauw" gltf-model="#steakRauw"  scale="1 1 1" position="0 0.2 13"></a-entity>
 
       <a-sky src="Materials/Sky.jpg"></a-sky>
 
