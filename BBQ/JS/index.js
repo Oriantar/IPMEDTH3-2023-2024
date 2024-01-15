@@ -123,6 +123,7 @@ window.onload = () =>{
     //  console.log('vlees has been clicked');
     //  if(pepermolen == hold){
     //     vlees.setAttribute("src", vlees_gekruid.jpg)
+    // en dan dit elke keer doen voor elke soort kruiden en combinatie? of is dat te ingewikkeld?
     // }
     // })
     
