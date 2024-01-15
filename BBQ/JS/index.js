@@ -41,17 +41,32 @@ window.onload = () =>{
         if (positie == 0){
             (function(){
                 var sec = 0;
+                let active = false;
                 timer = setInterval(()=>{
-                    sec ++;
+                    if(hold == null){
+                        sec ++;
                     console.log(sec);
+                    if(box.getAttribute('color') == 'black'){
+                        clearInterval(timer);
+                    }
+                    if(box.getAttribute('color') =='brown'){
+                        if(active == false){
+                            active = true;
+                            sec = 0;
+                            sec += tijd1;
+                        }
+                    }
                     if(sec == tijd1){
                         box.setAttribute('color', 'brown');
                     }
-                    if(sec == tijd2){
-                        box.setAttribute('color', 'black');
+                    if(sec >= tijd2){
+                        box.setAttribute('color', 'black');   
+                    }
+                        
+                    }else{
                         clearInterval(timer);
                     }
-
+                    
                 }, 1000) // elke seconde
                 
             })()  
