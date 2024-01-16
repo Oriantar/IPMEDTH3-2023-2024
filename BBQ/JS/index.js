@@ -37,6 +37,7 @@ window.onload = () =>{
         }, 1000) // elke seconde
     }
     
+
     
     function vleesBakken(positie, box, id, tijd1, tijd2){
         if (positie == 0){
@@ -59,17 +60,17 @@ window.onload = () =>{
                     }
                     if(sec == tijd1){
                         if(box.getAttribute('class') == 'js--clickable js--pickup js--halfCooked js--flipped'){
-                            text = '#' + id + 'cooked';
+                            text = '#' + id + 'Cooked';
                             box.setAttribute('gltf-model', text);
                             box.setAttribute('class', 'js--clickable js--pickup js--cooked')
                         } else{
-                            text = '#' + id + 'halfCooked';
+                            text = '#' + id + 'HalfCooked';
                             box.setAttribute('gltf-model', text);
                             box.setAttribute('class', 'js--clickable js--pickup js--halfCooked');
                         } 
                     }
                     if(sec >= tijd2){
-                        text = '#' + id + 'black';
+                        text = '#' + id + 'Black';
                         box.setAttribute('gltf-model', text);   
                         box.setAttribute('class', 'js--clickable js--pickup js--black');
                     }
