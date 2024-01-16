@@ -36,8 +36,9 @@ window.onload = () =>{
             console.log(sec);
         }, 1000) // elke seconde
     }
-
-    function vleesBakken(positie, box, tijd1, tijd2){
+    
+    
+    function vleesBakken(positie, box, id, tijd1, tijd2){
         if (positie == 0){
             (function(){
                 var sec = 0;
@@ -46,10 +47,10 @@ window.onload = () =>{
                     if(hold == null){
                         sec ++;
                     console.log(sec);
-                    if(box.getAttribute('color') == 'black'){
+                    if(box.getAttribute('class') == 'js--clickable js--pickup js--black'){
                         clearInterval(timer);
                     }
-                    if(box.getAttribute('color') =='brown'){
+                    if(box.getAttribute('class') =='js--clickable js--pickup js--brown'){
                         if(active == false){
                             active = true;
                             sec = 0;
@@ -57,10 +58,15 @@ window.onload = () =>{
                         }
                     }
                     if(sec == tijd1){
-                        box.setAttribute('color', 'brown');
+                        text = '#' + id + 'HalfCooked';
+                        box.setAttribute('gltf-model', text);
+                        box.setAttribute('class', 'js--clickable js--pickup js--brown');
+                        
                     }
                     if(sec >= tijd2){
-                        box.setAttribute('color', 'black');   
+                        text = '#' + id + 'Cooked';
+                        box.setAttribute('gltf-model', text);   
+                        box.setAttribute('class', 'js--clickable js--pickup js--black');
                     }
                         
                     }else{
@@ -71,10 +77,9 @@ window.onload = () =>{
                 
             })()  
         }
+    
     }
-
-
-
+    
     place = (id, object) => {
         let box = document.createElement('a-entity');
         let nodeMap = document.getElementById(id).attributes;
