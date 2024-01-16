@@ -6,20 +6,22 @@
   <body>
     <a-scene id="js--scene">
 
-      <a-assets>
-        <a-asset-item id="Pepper" src="./assets/Pepper.gltf"></a-asset-item>
-        <a-asset-item id="Salt" src="./assets/Salt.gltf"></a-asset-item>
 
+      <a-assets>
+        <a-asset-item id="Pepper" src="./assets/Peper.gltf"></a-asset-item>
+        <a-asset-item id="Salt" src="./assets/Salt.gltf"></a-asset-item>
+      
         <a-asset-item id="Spatel" src="./assets/Spatel.gltf"></a-asset-item>
         <a-asset-item id="Vork" src="./assets/Vork.gltf"></a-asset-item>
-
-        <a-asset-item id="Saté" src="./assets/Saté.gltf"></a-asset-item>
-        <a-asset-item id="SatéCooked" src="./assets/SatéCooked.gltf"></a-asset-item>
-        <a-asset-item id="SatéHalfCooked" src="./assets/SatéHalfCooked"></a-asset-item>
-
+      
+        <a-asset-item id="Sate" src="./assets/Sate.gltf"></a-asset-item>
+        <a-asset-item id="SateCooked" src="./assets/SateCooked.gltf"></a-asset-item>
+        <a-asset-item id="SateHalfCooked" src="./assets/SateHalfCooked.gltf"></a-asset-item>
+        <a-asset-item id="SateBlack" src="./assets/SateBlack.gltf"></a-asset-item>
+      
         <a-asset-item id="steakBlack" src="./assets/steakBlack.gltf"></a-asset-item>
         <a-asset-item id="steakRauw" src="./assets/steakRauw.gltf"></a-asset-item>
-        <a-asset-item id="steakCookedHalf" src="./assets/steakBakedHalf.gltf"></a-asset-item>
+        <a-asset-item id="steakHalfCooked" src="./assets/steakBakedHalf.gltf"></a-asset-item>
         <a-asset-item id="steakCooked" src="./assets/steakBaked.gltf"></a-asset-item>
         <a-asset-item id="steakBlack" src="./assets/steakBlack.gltf"></a-asset-item>
         <a-asset-item id="steakSalt" src="./assets/steakSalt.gltf"></a-asset-item>
@@ -28,6 +30,9 @@
 
 
       </a-assets>
+
+
+
 
       <a-entity>
       <a-box position="0 0 -40" rotation="0 0 0" width="80" height="24" color="brown" ></a-box>
@@ -52,8 +57,12 @@
         <a-box position="2 0 -1.5" rotation="90 0 0" width="0.1" height="0.1" scale="1 1 2" color="white"></a-box>
         <a-box position="1 1 -0.75" rotation="90 0 0" width="2.5" height="2" scale="1 1 0.1" color="white"></a-box>
       </a-entity>
+      <!-- 2de placer om nieuwe functie mee te testen -->
+      <a-box class="js--clickable js--place" position="0 -0.2 0" scale="1 0.1 1" color="brown"></a-box>
+
       <a-box class="js--clickable js--place" position="0 -0.2 13" scale="1 0.1 1" color="brown"></a-box>
-      <a-box class="js--clickable js--pickup" id="testSalade" position="0 0.2 13"  color="red"></a-box>
+<!--      <a-box class="js&#45;&#45;clickable js&#45;&#45;pickup" id="testSalade" position="0 0.2 13"  color="red"></a-box>-->
+      <a-entity class="js--clickable js--pickup" id="#steak" gltf-model="#steak"  scale="1 1 1" position="0 0.2 13"></a-entity>
 
       <a-sky src="Materials/Sky.jpg"></a-sky>
 
