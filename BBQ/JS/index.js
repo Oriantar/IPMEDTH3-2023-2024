@@ -50,7 +50,7 @@ window.onload = () =>{
                     if(box.getAttribute('class') == 'js--clickable js--pickup js--black'){
                         clearInterval(timer);
                     }
-                    if(box.getAttribute('class') =='js--clickable js--pickup js--brown'){
+                    if(box.getAttribute('class') =='js--clickable js--pickup js--halfCooked'){
                         if(active == false){
                             active = true;
                             sec = 0;
@@ -58,13 +58,18 @@ window.onload = () =>{
                         }
                     }
                     if(sec == tijd1){
-                        text = '#' + id + 'HalfCooked';
-                        box.setAttribute('gltf-model', text);
-                        box.setAttribute('class', 'js--clickable js--pickup js--brown');
-                        
+                        if(box.getAttribute('class') == 'js--clickable js--pickup js--halfCooked js--flipped'){
+                            text = '#' + id + 'cooked';
+                            box.setAttribute('gltf-model', text);
+                            box.setAttribute('class', 'js--clickable js--pickup js--cooked')
+                        } else{
+                            text = '#' + id + 'halfCooked';
+                            box.setAttribute('gltf-model', text);
+                            box.setAttribute('class', 'js--clickable js--pickup js--halfCooked');
+                        } 
                     }
                     if(sec >= tijd2){
-                        text = '#' + id + 'Cooked';
+                        text = '#' + id + 'black';
                         box.setAttribute('gltf-model', text);   
                         box.setAttribute('class', 'js--clickable js--pickup js--black');
                     }
