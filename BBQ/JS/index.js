@@ -1,9 +1,10 @@
 window.onload = () =>{
 
     const pickups = document.getElementsByClassName('js--pickup');
-    const places = document.getElementsByClassName('js--place')
+    const places = document.getElementsByClassName('js--place');
     const camera = document.getElementById('js--camera');
     let scene = document.getElementById('js--scene');
+    const kruidbaar = document.getElementsByClassName('js--kruid');
     // const vlees = document.getElementById("js--vlees");
     // const pepermolen = document.getElementById("js--pepermolen");
     let hold = null;
@@ -27,7 +28,18 @@ window.onload = () =>{
                 }
             })
         }
+        for (let i= 0; i<kruidbaar.length; i++){
+            kruidbaar[i].addEventListener('click', () => {
+                if (hold == '#Pepper'){
+                    vleeskruiden(event.target.id);
+                }
+                if (hold == '#Salt'){
+                    vleeszouten(event.target.id);
+                }
+            })
+        }
     }
+
     //timer maken
     function timer(sec){
         tijd = setInterval(()=>{
@@ -88,6 +100,41 @@ window.onload = () =>{
         }
     
     }
+
+    function vleeskruiden(id){
+        let vlees = document.getElementById(id);
+        if (vlees.getAttribute(id) == '#steakRauw'){
+            vlees.removeAttribute('gltf-model');
+            vlees.setAttribute('id', '#steakPepper');
+            vlees.setAttribute('gltf-model', '#steakPepper');
+            
+        }
+        else if(vlees.getAttribute(id) == '#steakSalt'){
+            vlees.removeAttribute('gltf-model');
+            vlees.setAttribute('id', '#steakSalt');
+            vlees.setAttribute('gltf-model', '#steakSaltPepper');
+        }
+    }
+
+    function vleeszouten(id){
+        let vlees = document.getElementById(id);
+        if (vlees.getAttribute(id) == '#steakRauw'){
+            vlees.removeAttribute('gltf-model');
+            vlees.setAttribute('id', '#steakSalt');
+            vlees.setAttribute('gltf-model', '#steakSalt');
+    }
+        else if(vlees.getAttribute(id) == '#steakPepper'){
+            vlees.removeAttribute('gltf-model');
+            vlees.setAttribute('id', '#steakGekruid');
+            vlees.setAttribute('gltf-model', '#steakSaltPepper');      
+        }
+        else if(vlees.getAttribute(id) == '#steakSalt' || vlees.getAttribute(id) == '#steakSaltPepper'){
+            return;
+        }
+    }
+
+    
+    
     /*
     function ziltigVlees(box, id, object){
         (function()){
