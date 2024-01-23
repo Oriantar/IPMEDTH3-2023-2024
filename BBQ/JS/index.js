@@ -162,67 +162,28 @@ window.onload = () =>{
         }
     }
     */
+
     place = (id, object) => {
         let box = document.createElement('a-entity');
-        let originalEntity = document.getElementById(id);
-        let nodeMap = originalEntity.attributes;
+        let nodeMap = document.getElementById(id).attributes;
         let pos = object.getAttribute('position');
-
-        // Set the basic attributes for the box
+        console.log(pos.z);
         box.setAttribute('position', {x: pos.x, y:"0.2", z: pos.z});
         box.setAttribute('class', 'js--clickable js--pickup');
-
-        // Loop through all attributes of the original entity
         for (let i = 0; i < nodeMap.length; i++){
-            let attrName = nodeMap[i].name;
-            let attrValue = nodeMap[i].value;
-
-            // Skip certain attributes
-            if(attrName === "position" || attrName === "class" || attrName === "material" || attrName === "geometry"){
+            if(nodeMap[i].name == "position" || nodeMap[i].name == "class" || nodeMap[i].name == "material" || nodeMap[i].name == "geometry"){
                 continue;
             }
-
-            // Set the attribute on the new box
-            box.setAttribute(attrName, attrValue);
-            console.log(`Attribute set: ${attrName} = ${attrValue}`); // Debug log
-
+            box.setAttribute(nodeMap[i].name, nodeMap[i].value);
         }
-        // Check and log if the gltf-model attribute is set correctly
-        if (box.getAttribute('gltf-model')) {
-            console.log('gltf-model is set:', box.getAttribute('gltf-model'));
-        } else {
-            console.error('gltf-model is missing on the new entity');
-        }
-
-        // Append the box to the scene and proceed with other operations
         scene.appendChild(box);
+        // ziltigVlees(pos.z, box, id, object);
         vleesBakken(pos.z, box, id, 5, 10); //vlees wordt bruin/zwart na bepaalde tijd als het op de goede locatie geplaatst is.
         document.getElementsByClassName("js--hold").item(0).remove();
         hold = null;
         addListeners();
-        // ... rest of the function remains unchanged ...
+
     }
-    // place = (id, object) => {
-    //     let box = document.createElement('a-entity');
-    //     let nodeMap = document.getElementById(id).attributes;
-    //     let pos = object.getAttribute('position');
-    //     console.log(pos.z);
-    //     box.setAttribute('position', {x: pos.x, y:"0.2", z: pos.z});
-    //     box.setAttribute('class', 'js--clickable js--pickup');
-    //     for (let i = 0; i < nodeMap.length; i++){
-    //         if(nodeMap[i].name == "position" || nodeMap[i].name == "class" || nodeMap[i].name == "material" || nodeMap[i].name == "geometry"){
-    //             continue;
-    //         }
-    //         box.setAttribute(nodeMap[i].name, nodeMap[i].value);
-    //     }
-    //     scene.appendChild(box);
-    //     // ziltigVlees(pos.z, box, id, object);
-    //     vleesBakken(pos.z, box, id, 5, 10); //vlees wordt bruin/zwart na bepaalde tijd als het op de goede locatie geplaatst is.
-    //     document.getElementsByClassName("js--hold").item(0).remove();
-    //     hold = null;
-    //     addListeners();
-    //
-    // }
     pickup = (id, camera) => {
             let nodeMap = document.getElementById(id).attributes;
             let text = "";
