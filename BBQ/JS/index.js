@@ -112,7 +112,7 @@ window.onload = () =>{
         }
     }
     */
-   
+
     place = (id, object) => {
         let box = document.createElement('a-entity');
         let nodeMap = document.getElementById(id).attributes;
@@ -130,7 +130,7 @@ window.onload = () =>{
         }
 
         scene.appendChild(box);
-        ziltigVlees(pos.z, box, id, object);
+        // ziltigVlees(pos.z, box, id, object);
         vleesBakken(pos.z, box, id, 5, 10); //vlees wordt bruin/zwart na bepaalde tijd als het op de goede locatie geplaatst is.
         document.getElementsByClassName("js--hold").item(0).remove();
         hold = null;
