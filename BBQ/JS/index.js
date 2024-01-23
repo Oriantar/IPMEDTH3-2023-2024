@@ -88,7 +88,31 @@ window.onload = () =>{
         }
     
     }
-    
+    /*
+    function ziltigVlees(box, id, object){
+        (function()){
+            if(id is rauwvlees){
+                if(object == peper){
+                    maak nieuwe box aan vleesmetpeper
+                }
+                if(object == zout)
+                    maak nieuwe box aan vleesmetzout
+                }
+            }
+            if(id is vleesmetpeper){
+                if(object == salt){
+                    maak nieuwe box aan  gekruid
+                }
+            }
+            if(id is vleesmetzout){
+                if(object == peper){
+                    maak nieuwe box aan gekruid
+                }
+            }   
+        }
+    }
+    */
+   
     place = (id, object) => {
         let box = document.createElement('a-entity');
         let nodeMap = document.getElementById(id).attributes;
@@ -106,6 +130,7 @@ window.onload = () =>{
         }
 
         scene.appendChild(box);
+        ziltigVlees(pos.z, box, id, object);
         vleesBakken(pos.z, box, id, 5, 10); //vlees wordt bruin/zwart na bepaalde tijd als het op de goede locatie geplaatst is.
         document.getElementsByClassName("js--hold").item(0).remove();
         hold = null;
@@ -138,6 +163,13 @@ window.onload = () =>{
             console.log(hold);
     }
     addListeners();
+
+    
+
+
+
+    //  <a-asset-item id="steakSalt" src="./assets/steakSalt.gltf"></a-asset-item>
+    // <a-asset-item id="steakPepper" src="./assets/steakPepper.gltf"></a-asset-item>
 
 
 
