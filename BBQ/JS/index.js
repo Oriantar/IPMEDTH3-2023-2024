@@ -50,7 +50,7 @@ window.onload = () =>{
     }
     
 
-    
+    // add a better way to duplicate the "gltf-model template change thing"
     function vleesBakken(positie, box, id, tijd1, tijd2){
         if (positie == 0){
             (function(){
@@ -75,12 +75,14 @@ window.onload = () =>{
                             text = id + 'Cooked';
                             box.setAttribute('gltf-model', text);
                             box.setAttribute('class', 'js--clickable js--pickup js--cooked')
+                            box.setAttribute('id', text)
                         } else{
                             text = id + 'HalfCooked';
                             console.log(text);
                             box.removeAttribute('gltf-model');
                             box.setAttribute('gltf-model', text);
                             box.setAttribute('class', 'js--clickable js--pickup js--halfCooked');
+                            box.setAttribute('id', text)
                         } 
                     }
                     if(sec >= tijd2){
@@ -88,6 +90,7 @@ window.onload = () =>{
                         box.removeAttribute('gltf-model');
                         box.setAttribute('gltf-model', text);   
                         box.setAttribute('class', 'js--clickable js--pickup js--black');
+                        box.setAttribute('id', text)
                     }
                         
                     }else{
@@ -171,18 +174,15 @@ window.onload = () =>{
             if(nodeMap[i].name == "position" || nodeMap[i].name == "class" || nodeMap[i].name == "material" || nodeMap[i].name == "geometry"){
                 continue;
             }
-
             box.setAttribute(nodeMap[i].name, nodeMap[i].value);
-
         }
-
         scene.appendChild(box);
         // ziltigVlees(pos.z, box, id, object);
         vleesBakken(pos.z, box, id, 5, 10); //vlees wordt bruin/zwart na bepaalde tijd als het op de goede locatie geplaatst is.
         document.getElementsByClassName("js--hold").item(0).remove();
         hold = null;
         addListeners();
-        
+
     }
     */
 
@@ -230,6 +230,7 @@ window.onload = () =>{
             for (let i = 0; i < nodeMap.length; i++) {
                 if (nodeMap[i].name == "position") continue;
                 if (nodeMap[i].name == "material") continue;
+                if (nodeMap[i].name == "gltf-model") continue;
                 if (nodeMap[i].name == "class"){
                     text += nodeMap[i].name + "=" + "'" + nodeMap[i].value + " js--hold' ";
                     continue;
@@ -237,7 +238,7 @@ window.onload = () =>{
                 text += nodeMap[i].name + "=" + "'" + nodeMap[i].value + "' ";
                 console.log(text);
             }
-            let hoi = "<a-entity " + text + "position='1 -1 -1'></a-entity>";
+            let hoi = "<a-entity " + text + "position='1 -1 -1'" + " gltf-model='" + id + "' " + "></a-entity>";
             console.log(hoi);
             camera.innerHTML += hoi;
             hold = id;
