@@ -106,32 +106,42 @@ window.onload = () =>{
 
     function vleeskruiden(id){
         let vlees = document.getElementById(id);
-        if (vlees.getAttribute(id) == '#steakRauw'){
+        text = vlees.getAttribute('id');
+        if (text == '#steak' || text == 'sate'){
+            text = text + 'Pepper'
             vlees.removeAttribute('gltf-model');
-            vlees.setAttribute('id', '#steakPepper');
-            vlees.setAttribute('gltf-model', '#steakPepper');
+            vlees.setAttribute('id', text);
+            vlees.setAttribute('gltf-model', text);
             
         }
-        else if(vlees.getAttribute(id) == '#steakSalt'){
+        else if(text == '#steakSalt' || text == 'sateSalt'){
+            text = text + 'Pepper'
             vlees.removeAttribute('gltf-model');
-            vlees.setAttribute('id', '#steakSalt');
-            vlees.setAttribute('gltf-model', '#steakSaltPepper');
+            vlees.setAttribute('id', text);
+            vlees.setAttribute('gltf-model', text);
+        }
+        else{
+            return;
         }
     }
 
     function vleeszouten(id){
         let vlees = document.getElementById(id);
-        if (vlees.getAttribute(id) == '#steakRauw'){
+        text = vlees.getAttribute('id');
+        if (text == '#steak' || text == 'sate'){
+            text = text + 'Salt'
             vlees.removeAttribute('gltf-model');
-            vlees.setAttribute('id', '#steakSalt');
-            vlees.setAttribute('gltf-model', '#steakSalt');
-    }
-        else if(vlees.getAttribute(id) == '#steakPepper'){
-            vlees.removeAttribute('gltf-model');
-            vlees.setAttribute('id', '#steakGekruid');
-            vlees.setAttribute('gltf-model', '#steakSaltPepper');      
+            vlees.setAttribute('id', text);
+            vlees.setAttribute('gltf-model', text);
+            
         }
-        else if(vlees.getAttribute(id) == '#steakSalt' || vlees.getAttribute(id) == '#steakSaltPepper'){
+        else if(text == '#steakPepper' || text == 'satePepper'){
+            text = text + 'Salt'
+            vlees.removeAttribute('gltf-model');
+            vlees.setAttribute('id', text);
+            vlees.setAttribute('gltf-model', text);
+        }
+        else{
             return;
         }
     }
