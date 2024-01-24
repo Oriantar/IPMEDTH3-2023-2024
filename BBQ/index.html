@@ -14,21 +14,37 @@
         <a-asset-item id="Spatel" src="./assets/Spatel.gltf"></a-asset-item>
         <a-asset-item id="Vork" src="./assets/Vork.gltf"></a-asset-item>
       
-        <a-asset-item id="Sate" src="./assets/Sate.gltf"></a-asset-item>
-        <a-asset-item id="SateCooked" src="./assets/SateCooked.gltf"></a-asset-item>
-        <a-asset-item id="SateHalfCooked" src="./assets/SateHalfCooked.gltf"></a-asset-item>
-        <a-asset-item id="SateBlack" src="./assets/SateBlack.gltf"></a-asset-item>
+        <a-asset-item id="sate" src="./assets/Sate.gltf"></a-asset-item>
+        <a-asset-item id="sateCooked" src="./assets/SateCooked.gltf"></a-asset-item>
+        <a-asset-item id="sateHalfCooked" src="./assets/SateHalfCooked.gltf"></a-asset-item>
+        <a-asset-item id="sateBlack" src="./assets/SateBlack.gltf"></a-asset-item>
       
-        <a-asset-item id="steakBlack" src="./assets/steakBlack.gltf"></a-asset-item>
-        <a-asset-item id="steakRauw" src="./assets/steakRauw.gltf"></a-asset-item>
-        <a-asset-item id="steakHalfCooked" src="./assets/steakBakedHalf.gltf"></a-asset-item>
-        <a-asset-item id="steakCooked" src="./assets/steakBaked.gltf"></a-asset-item>
-        <a-asset-item id="steakBlack" src="./assets/steakBlack.gltf"></a-asset-item>
+        <a-asset-item id="steakSaltPepperBlack" src="./assets/steakBlack.gltf"></a-asset-item>
+        <a-asset-item id="steakPepperSaltBlack" src="./assets/steakBlack.gltf"></a-asset-item>
+
+        <a-asset-item id="steak" src="./assets/steakRauw.gltf"></a-asset-item>
+        <a-asset-item id="steakSaltPepperHalfCooked" src="./assets/steakBakedHalf.gltf"></a-asset-item>
+        <a-asset-item id="steakPepperSaltHalfCooked" src="./assets/steakBakedHalf.gltf"></a-asset-item>
+
+        <a-asset-item id="steakSaltPepperCooked" src="./assets/steakBaked.gltf"></a-asset-item>
+        <a-asset-item id="steakPepperSaltCooked" src="./assets/steakBaked.gltf"></a-asset-item>
+
+        <a-asset-item id="steakSaltPepperBlack" src="./assets/steakBlack.gltf"></a-asset-item>
+        <a-asset-item id="steakPepperSaltBlack" src="./assets/steakBlack.gltf"></a-asset-item>
+
         <a-asset-item id="steakSalt" src="./assets/steakSalt.gltf"></a-asset-item>
         <a-asset-item id="steakPepper" src="./assets/steakPepper.gltf"></a-asset-item>
+
+        
+
+        <a-asset-item id="steakSaltPepper" src="./assets/steakSaltPepper.gltf"></a-asset-item>
+        <a-asset-item id="steakPepperSalt" src="./assets/steakSaltPepper.gltf"></a-asset-item>
+
         <a-asset-item id="steak" src="./assets/steakSaltPepper.gltf"></a-asset-item>
         <a-asset-item id="fred" src="./assets/Fred.gltf"></a-asset-item>
         <a-asset-item id="bord" src="./assets/bord.gltf"></a-asset-item>
+
+
       </a-assets>
 
 
@@ -58,15 +74,32 @@
         <a-box position="1 1 -0.75" rotation="90 0 0" width="2.5" height="2" scale="1 1 0.1" color="white"></a-box>
       </a-entity>
       <!-- 2de placer om nieuwe functie mee te testen -->
+
       <a-entity class="js--clickable js--place" position="0 -0.2 0" gltf-model="#bord" scale="0.3 0.3 0.3"></a-entity>
 
+      <a-box class="js--clickable js--place" position="0 -0.2 0" scale="1 0.1 1" color="brown"></a-box>
+      <a-box class="js--clickable js--place" position="0 -0.2 15" scale="1 0.1 1" color="brown"></a-box>
+      <a-box class="js--clickable js--place" position="2 -0.2 13" scale="1 0.1 1" color="brown"></a-box>
+
+
+
+
       <a-entity class="js--clickable js--pickup" id="#Pepper" gltf-model="#Pepper"  scale="0.2 0.2 0.2" position="0 0.2 15"></a-entity>
+      <a-entity class="js--clickable js--pickup" id="#Salt" gltf-model="#Salt"  scale="0.2 0.2 0.2" position="2 0.2 13"></a-entity>
 
       <a-box class="js--clickable js--place" position="0 -0.2 13" scale="1 0.1 1" color="brown"></a-box>
 <!--      <a-box class="js&#45;&#45;clickable js&#45;&#45;pickup" id="testSalade" position="0 0.2 13"  color="red"></a-box>-->
+
       <a-entity class="js--clickable js--pickup" id="#steak" gltf-model="#steak"  scale="1 1 1" position="0 0.2 13"></a-entity>
       <a-entity class="js--clickable js--pickup js--kruid" id="#steakRauw" gltf-model="#steakRauw"  scale="1 1 1" position="0 0.2 11"></a-entity>
       <a-entity id="#fred" gltf-model="#fred" position="10 -4 0" scale="3 3 3"></a-entity>
+
+      <a-entity class="js--clickable js--pickup" id="#steakSaltPepper" gltf-model="#steakSaltPepper"  scale="1 1 1" position="0 0.2 13"></a-entity>
+      <a-entity class="js--clickable js--pickup js--kruid" id="#steak" gltf-model="#steak"  scale="1 1 1" position="0 0.2 11"></a-entity>
+      <a-entity class="js--clickable js--pickup js--kruid" id="#sate" gltf-model="#sate"  scale="0.3 0.3 0.3" position="2 0.2 11"></a-entity>
+
+
+
       <a-sky src="Materials/Sky.jpg"></a-sky>
 
       <a-camera look-controls id="js--camera">
