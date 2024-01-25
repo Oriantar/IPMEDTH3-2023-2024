@@ -189,26 +189,10 @@ window.onload = () =>{
             if(nodeMap[i].name == "position" || nodeMap[i].name == "class" || nodeMap[i].name == "material" || nodeMap[i].name == "geometry"){
                 continue;
             }
-<<<<<<< Updated upstream
             box.setAttribute(nodeMap[i].name, nodeMap[i].value);
         }
         scene.appendChild(box);
         // ziltigVlees(pos.z, box, id, object);
-=======
-            
-
-            box.setAttribute(nodeMap[i].name, nodeMap[i].value);
-            console.log(box);
-        }
-        console.log(box);
-
-        scene.appendChild(box);
-        console.log(box);
-
-        box.removeAttribute('gltf-model');
-        box.setAttribute('gltf-model', '#steak');
-        console.log(box);
->>>>>>> Stashed changes
         vleesBakken(pos.z, box, id, 5, 10); //vlees wordt bruin/zwart na bepaalde tijd als het op de goede locatie geplaatst is.
         document.getElementsByClassName("js--hold").item(0).remove();
         hold = null;
