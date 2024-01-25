@@ -118,7 +118,7 @@ window.onload = () =>{
             vlees.setAttribute('gltf-model', text);
             
         }
-        else if(text == '#steakSalt' || text == 'sateSalt'){
+        else if(text == '#steakSalt' || text == '#sateSalt'){
             text = text + 'Pepper'
             vlees.removeAttribute('gltf-model');
             vlees.setAttribute('id', text);
@@ -132,14 +132,14 @@ window.onload = () =>{
     function vleeszouten(id){
         let vlees = document.getElementById(id);
         text = vlees.getAttribute('id');
-        if (text == '#steak' || text == 'sate'){
+        if (text == '#steak' || text == '#sate'){
             text = text + 'Salt'
             vlees.removeAttribute('gltf-model');
             vlees.setAttribute('id', text);
             vlees.setAttribute('gltf-model', text);
             
         }
-        else if(text == '#steakPepper' || text == 'satePepper'){
+        else if(text == '#steakPepper' || text == '#satePepper'){
             text = text + 'Salt'
             vlees.removeAttribute('gltf-model');
             vlees.setAttribute('id', text);
