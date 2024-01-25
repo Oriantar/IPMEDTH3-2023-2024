@@ -33,8 +33,12 @@ window.onload = () =>{
                 if (hold == '#Pepper'){
                     vleeskruiden(event.target.id);
                 }
-                if (hold == '#Salt'){
+                else if
+                 (hold == '#Salt'){
                     vleeszouten(event.target.id);
+                }
+                else{
+                    return;
                 }
             })
         }
