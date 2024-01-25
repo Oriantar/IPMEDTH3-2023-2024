@@ -111,7 +111,7 @@ window.onload = () =>{
     function vleeskruiden(id){
         let vlees = document.getElementById(id);
         text = vlees.getAttribute('id');
-        if (text == '#steak' || text == 'sate'){
+        if (text == '#steak' || text == '#sate'){
             text = text + 'Pepper'
             vlees.removeAttribute('gltf-model');
             vlees.setAttribute('id', text);
@@ -183,15 +183,32 @@ window.onload = () =>{
         let pos = object.getAttribute('position');
         console.log(pos.z);
         box.setAttribute('position', {x: pos.x, y:"0.2", z: pos.z});
+        console.log(box.getAttribute('position'));
         box.setAttribute('class', 'js--clickable js--pickup');
         for (let i = 0; i < nodeMap.length; i++){
             if(nodeMap[i].name == "position" || nodeMap[i].name == "class" || nodeMap[i].name == "material" || nodeMap[i].name == "geometry"){
                 continue;
             }
+<<<<<<< Updated upstream
             box.setAttribute(nodeMap[i].name, nodeMap[i].value);
         }
         scene.appendChild(box);
         // ziltigVlees(pos.z, box, id, object);
+=======
+            
+
+            box.setAttribute(nodeMap[i].name, nodeMap[i].value);
+            console.log(box);
+        }
+        console.log(box);
+
+        scene.appendChild(box);
+        console.log(box);
+
+        box.removeAttribute('gltf-model');
+        box.setAttribute('gltf-model', '#steak');
+        console.log(box);
+>>>>>>> Stashed changes
         vleesBakken(pos.z, box, id, 5, 10); //vlees wordt bruin/zwart na bepaalde tijd als het op de goede locatie geplaatst is.
         document.getElementsByClassName("js--hold").item(0).remove();
         hold = null;
@@ -205,6 +222,7 @@ window.onload = () =>{
                 if (nodeMap[i].name == "position") continue;
                 if (nodeMap[i].name == "material") continue;
                 if (nodeMap[i].name == "gltf-model") continue;
+                if (nodeMap[i].name == "scale") continue;
                 if (nodeMap[i].name == "class"){
                     text += nodeMap[i].name + "=" + "'" + nodeMap[i].value + " js--hold' ";
                     continue;
@@ -212,7 +230,15 @@ window.onload = () =>{
                 text += nodeMap[i].name + "=" + "'" + nodeMap[i].value + "' ";
                 console.log(text);
             }
-            let hoi = "<a-entity " + text + "position='1 -1 -1'" + " gltf-model='" + id + "' " + "></a-entity>";
+
+            if(id == '#sate' || id == '#satePepper' || id == '#satePepperSalt'
+             || id == '#sateSalt' || id == '#sateSaltPepper' ||
+              id == '#satePepperSaltCooked' || id == '#sateSaltPepperCooked' ||
+               id == '#satePepperSaltHalfCooked' || id == '#sateSaltPepperHalfCooked' ||
+                id == '#satePepperSaltBlack' ||id == '#sateSaltPepperBlack')  {
+                 text += 'scale= "0.3 0.3 0.3"'
+                }
+            let hoi = "<a-entity " + text + "position='1 -1 -1'" + " gltf-model='" + id + "'  " + "></a-entity>";
             console.log(hoi);
             camera.innerHTML += hoi;
             hold = id;
