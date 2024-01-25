@@ -55,6 +55,7 @@
 
         <a-asset-item id="fred" src="./assets/Fred.gltf"></a-asset-item>
         <a-asset-item id="bord" src="./assets/bord.gltf"></a-asset-item>
+        <a-asset-item id="grillplaat" src="./assets/grillPlaat.gltf"></a-asset-item>
 
 
       </a-assets>
@@ -87,7 +88,7 @@
       </a-entity>
       <!-- 2de placer om nieuwe functie mee te testen -->
 
-      <a-entity class="js--clickable js--place" position="0 -0.2 0" gltf-model="#bord" scale="0.3 0.3 0.3"></a-entity>
+      <a-entity class="js--clickable js--place" position="3 -0.2 0" id="#grillplaat" gltf-model="#grillplaat" scale="0.3 0.3 0.3"></a-entity>
 
       <a-box class="js--clickable js--place" position="0 -0.2 0" scale="1 0.1 1" color="brown"></a-box>
       <a-box class="js--clickable js--place" position="0 -0.2 15" scale="1 0.1 1" color="brown"></a-box>
@@ -112,6 +113,9 @@
       <a-entity class="js--clickable js--pickup js--kruid" id="#sateSalt" gltf-model="#sateSalt"  scale="0.3 0.3 0.3" position="1 0.2 11"></a-entity>
 
       <a-entity class="js--clickable js--pickup js--kruid" id="#sateSaltPepper" gltf-model="#sateSaltPepper"  scale="0.3 0.3 0.3" position="3 0.2 11"></a-entity>
+
+      <a-entity class="js--clickable js--pickup" id="#Spatel" gltf-model="#Spatel"  scale="1 1 1" position="4 0.2 11" rotation="0 -90 0 "></a-entity>
+      <a-entity class="js--clickable js--pickup" id="#Vork" gltf-model="#Vork"  scale="1 1 1" position="4 0.2 11" rotation="0 -90 0 "></a-entity>
 
 
 
