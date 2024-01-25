@@ -207,6 +207,7 @@ window.onload = () =>{
                 if (nodeMap[i].name == "material") continue;
                 if (nodeMap[i].name == "gltf-model") continue;
                 if (nodeMap[i].name == "scale") continue;
+                if (nodeMap[i].name == "rotation") continue;
                 if (nodeMap[i].name == "class"){
                     text += nodeMap[i].name + "=" + "'" + nodeMap[i].value + " js--hold' ";
                     continue;
@@ -220,8 +221,11 @@ window.onload = () =>{
               id == '#satePepperSaltCooked' || id == '#sateSaltPepperCooked' ||
                id == '#satePepperSaltHalfCooked' || id == '#sateSaltPepperHalfCooked' ||
                 id == '#satePepperSaltBlack' ||id == '#sateSaltPepperBlack')  {
-                 text += 'scale= "0.3 0.3 0.3"'
+                 text += 'scale= "0.3 0.3 0.3"';
                 }
+            if(id == '#Spatel'){
+                text += 'rotation= "0 -95 0 "';
+            }
             let hoi = "<a-entity " + text + "position='1 -1 -1'" + " gltf-model='" + id + "'  " + "></a-entity>";
             console.log(hoi);
             camera.innerHTML += hoi;
