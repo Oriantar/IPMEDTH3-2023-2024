@@ -3,6 +3,7 @@ window.onload = () =>{
     const pickups = document.getElementsByClassName('js--pickup');
     const places = document.getElementsByClassName('js--place');
     const camera = document.getElementById('js--camera');
+    const flippables = document.getElementsByClassName('js--flippable');
     let scene = document.getElementById('js--scene');
     const kruidbaar = document.getElementsByClassName('js--kruid');
     // const vlees = document.getElementById("js--vlees");
@@ -42,7 +43,15 @@ window.onload = () =>{
                     return;
                 }
             })
+
+        for(let i=0; i<flippables.length; i++){
+            flippables[i].addEventListener('click', () =>{
+                if(hold == '#Spatel'){
+                    vleesFlippen(event.target.id);
+                }
+            } )
         }
+    }
         }
 
     //timer maken
@@ -54,6 +63,18 @@ window.onload = () =>{
         }, 1000) // elke seconde
     }
     
+    function vleesFlippen(id){
+        let vlees = document.getElementById(id);
+        text = vlees.getAttribute('class');
+        console.log(text);
+        if(text == 'js--clickable js--pickup js--halfcooked' && id != '#sateSaltPepper' || id != '#satePepperSalt'){
+            vlees.setAttribute('rotation', '180 0 0');
+            vlees.setAttribute('class','js--clickable js--pickup js--halfCooked js--flipped');
+        }
+        else{
+            return;
+        }
+    }
 
     // add a better way to duplicate the "gltf-model template change thing"
     function vleesBakken(positie, box, id, tijd1, tijd2){
@@ -63,13 +84,13 @@ window.onload = () =>{
                 var sec = 0;
                 let active = false;
                 timer = setInterval(()=>{
-                    if(hold == null){
                         sec ++;
                     console.log(sec);
+                    console.log(box.getAttribute('class'));
                     if(box.getAttribute('class') == 'js--clickable js--pickup js--black'){
                         clearInterval(timer);
                     }
-                    if(box.getAttribute('class') =='js--clickable js--pickup js--halfCooked'){
+                    if(box.getAttribute('class') =='js--clickable js--pickup js--halfCooked js--flipped'){
                         if(active == false){
                             active = true;
                             sec = 0;
@@ -79,6 +100,7 @@ window.onload = () =>{
                     if(sec == tijd1){
                         if(box.getAttribute('class') == 'js--clickable js--pickup js--halfCooked js--flipped'){
                             text = id + 'Cooked';
+                            box.removeAttribute('gltf-model');
                             box.setAttribute('gltf-model', text);
                             box.setAttribute('class', 'js--clickable js--pickup js--cooked')
                             box.setAttribute('id', text)
@@ -98,11 +120,6 @@ window.onload = () =>{
                         box.setAttribute('class', 'js--clickable js--pickup js--black');
                         box.setAttribute('id', text)
                     }
-                        
-                    }else{
-                        clearInterval(timer);
-                    }
-                    
                 }, 1000) // elke seconde
                 
             })()  
@@ -126,7 +143,7 @@ window.onload = () =>{
             vlees.removeAttribute('gltf-model');
             vlees.setAttribute('id', text);
             vlees.setAttribute('gltf-model', text);
-            vlees.setAttribute('class', 'js--clickable js--pickup');
+            vlees.setAttribute('class', 'js--clickable js--pickup js--flippable');
         }
         else{
             return;
@@ -148,7 +165,7 @@ window.onload = () =>{
             vlees.removeAttribute('gltf-model');
             vlees.setAttribute('id', text);
             vlees.setAttribute('gltf-model', text);
-            vlees.setAttribute('class', 'js--clickable js--pickup');
+            vlees.setAttribute('class', 'js--clickable js--pickup js--flippable');
         }
         else{
             return;
