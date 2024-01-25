@@ -28,6 +28,7 @@ window.onload = () =>{
                 }
             })
         }
+        
         for (let i= 0; i<kruidbaar.length; i++){
             kruidbaar[i].addEventListener('click', () => {
                 if (hold == '#Pepper'){
@@ -42,7 +43,7 @@ window.onload = () =>{
                 }
             })
         }
-    }
+        }
 
     //timer maken
     function timer(sec){
@@ -56,7 +57,8 @@ window.onload = () =>{
 
     // add a better way to duplicate the "gltf-model template change thing"
     function vleesBakken(positie, box, id, tijd1, tijd2){
-        if (positie == 0){
+        console.log(box.getAttribute('class'));
+        if (positie == 0 && box.getAttribute('class') != 'js--clickable js--pickup js--kruid js--hold'){
             (function(){
                 var sec = 0;
                 let active = false;
@@ -116,6 +118,7 @@ window.onload = () =>{
             vlees.removeAttribute('gltf-model');
             vlees.setAttribute('id', text);
             vlees.setAttribute('gltf-model', text);
+            vlees.setAttribute('class', 'js--clickable js--pickup')
             
         }
         else if(text == '#steakSalt' || text == '#sateSalt'){
@@ -123,12 +126,13 @@ window.onload = () =>{
             vlees.removeAttribute('gltf-model');
             vlees.setAttribute('id', text);
             vlees.setAttribute('gltf-model', text);
+            vlees.setAttribute('class', 'js--clickable js--pickup');
         }
         else{
             return;
         }
     }
-
+    
     function vleeszouten(id){
         let vlees = document.getElementById(id);
         text = vlees.getAttribute('id');
@@ -144,6 +148,7 @@ window.onload = () =>{
             vlees.removeAttribute('gltf-model');
             vlees.setAttribute('id', text);
             vlees.setAttribute('gltf-model', text);
+            vlees.setAttribute('class', 'js--clickable js--pickup');
         }
         else{
             return;
@@ -186,7 +191,7 @@ window.onload = () =>{
         console.log(box.getAttribute('position'));
         box.setAttribute('class', 'js--clickable js--pickup');
         for (let i = 0; i < nodeMap.length; i++){
-            if(nodeMap[i].name == "position" || nodeMap[i].name == "class" || nodeMap[i].name == "material" || nodeMap[i].name == "geometry"){
+            if(nodeMap[i].name == "position" ||  nodeMap[i].name == "material" || nodeMap[i].name == "geometry"){
                 continue;
             }
             box.setAttribute(nodeMap[i].name, nodeMap[i].value);
@@ -209,8 +214,10 @@ window.onload = () =>{
                 if (nodeMap[i].name == "scale") continue;
                 if (nodeMap[i].name == "rotation") continue;
                 if (nodeMap[i].name == "class"){
+                    if(nodeMap[i].value != 'js--clickable js--pickup js--kruid js--hold'){
                     text += nodeMap[i].name + "=" + "'" + nodeMap[i].value + " js--hold' ";
                     continue;
+                    }
                 }
                 text += nodeMap[i].name + "=" + "'" + nodeMap[i].value + "' ";
                 console.log(text);
