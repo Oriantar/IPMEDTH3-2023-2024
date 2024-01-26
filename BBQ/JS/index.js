@@ -119,6 +119,7 @@ window.onload = () =>{
                         box.setAttribute('gltf-model', text);   
                         box.setAttribute('class', 'js--clickable js--pickup js--black');
                         box.setAttribute('id', text)
+                        clearInterval(timer);
                     }
                 }, 1000) // elke seconde
                 
