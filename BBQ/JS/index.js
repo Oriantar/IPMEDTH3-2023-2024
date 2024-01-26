@@ -9,6 +9,7 @@ window.onload = () =>{
     // const vlees = document.getElementById("js--vlees");
     // const pepermolen = document.getElementById("js--pepermolen");
     let hold = null;
+    let hold2 = null;
     var tijd;
     
 
@@ -17,14 +18,24 @@ window.onload = () =>{
         for (let i = 0; i < pickups.length; i++) {
             pickups[i].addEventListener('click', () => {
                 if (hold == null) {
+                    let id = event.target.id;
+                    if (id == "#Vork" || id == "#Spatel" || id == "#Salt" || id == "#Pepper"){
                     pickup(event.target.id, camera);
+                    event.target.remove();
+                    }
+                }
+                else if(hold == "#Vork"){
+                    pickupfork(event.target.id, camera);
                     event.target.remove();
                 }
             })
         }
         for (let i = 0; i < places.length; i++) {
             places[i].addEventListener('click', () => {
-                if (hold != null) {
+                if (hold2 != null){
+                    placefork(hold2, event.target);
+                }
+                else if (hold != null) {
                     place(hold, event.target);
                 }
             })
@@ -51,6 +62,7 @@ window.onload = () =>{
                 }
             } )
         }
+
     }
         }
 
@@ -62,6 +74,8 @@ window.onload = () =>{
             console.log(sec);
         }, 1000) // elke seconde
     }
+
+    
     
     function vleesFlippen(id){
         let vlees = document.getElementById(id);
@@ -127,6 +141,7 @@ window.onload = () =>{
         }
     
     }
+
 
     function vleeskruiden(id){
         let vlees = document.getElementById(id);
@@ -222,9 +237,80 @@ window.onload = () =>{
         addListeners();
 
     }
+
+    placefork = (id, object) => {
+        let box = document.createElement('a-entity');
+        let nodeMap = document.getElementById(id).attributes;
+        let pos = object.getAttribute('position');
+        console.log(pos.z);
+        box.setAttribute('position', {x: pos.x, y:"0.2", z: pos.z});
+        console.log(box.getAttribute('position'));
+        box.setAttribute('class', 'js--clickable js--pickup');
+        for (let i = 0; i < nodeMap.length; i++){
+            if(nodeMap[i].name == "position" ||  nodeMap[i].name == "material" || nodeMap[i].name == "geometry"){
+                continue;
+            }
+            box.setAttribute(nodeMap[i].name, nodeMap[i].value);
+        }
+        scene.appendChild(box);
+        // ziltigVlees(pos.z, box, id, object);
+        vleesBakken(pos.z, box, id, 5, 10); //vlees wordt bruin/zwart na bepaalde tijd als het op de goede locatie geplaatst is.
+        document.getElementsByClassName("js--hold").item(0).remove();
+        hold2 = null;
+        addListeners();
+
+    }
+
+    pickupfork = (id, camera) => {
+        let nodeMap = document.getElementById(id).attributes;
+        let text = "";
+        if (id != "#Spatel" || id != "#Pepper" || id != "#Salt"){
+        for (let i = 0; i < nodeMap.length; i++) {
+            if (nodeMap[i].name == "position") continue;
+            if (nodeMap[i].name == "material") continue;
+            if (nodeMap[i].name == "gltf-model") continue;
+            if (nodeMap[i].name == "scale") continue;
+            if (nodeMap[i].name == "rotation") continue;
+            if (nodeMap[i].name == "class"){
+                if(nodeMap[i].value != 'js--clickable js--pickup js--kruid js--hold'){
+                text += nodeMap[i].name + "=" + "'" + nodeMap[i].value + " js--hold' ";
+                continue;
+                }
+            }
+            text += nodeMap[i].name + "=" + "'" + nodeMap[i].value + "' ";
+            console.log(text);
+        }
+
+        if(id == '#sate' || id == '#satePepper' || id == '#satePepperSalt'
+         || id == '#sateSalt' || id == '#sateSaltPepper' ||
+          id == '#satePepperSaltCooked' || id == '#sateSaltPepperCooked' ||
+           id == '#satePepperSaltHalfCooked' || id == '#sateSaltPepperHalfCooked' ||
+            id == '#satePepperSaltBlack' ||id == '#sateSaltPepperBlack')  {
+             text += 'scale= "0.3 0.3 0.3"';
+            }
+        if(id == '#Spatel'){
+            text += 'rotation= "0 -95 0 "';
+        }
+        let hoi = "<a-entity " + text + "position='1 -1 -1'" + " gltf-model='" + id + "'  " + "></a-entity>";
+        console.log(hoi);
+        camera.innerHTML += hoi;
+        hold2 = id;
+        for ( let i = 0; i < nodeMap.length; i++){
+            if(nodeMap[i].value == 'js--clickable js--pickup js--black' && nodeMap[i].name == "class"){
+                console.log("yep")
+            }
+            
+        }
+    }
+        console.log(hold);
+}
+
+
     pickup = (id, camera) => {
             let nodeMap = document.getElementById(id).attributes;
             let text = "";
+            console.log(id);
+            if (id == "#Vork" || id == "#Spatel" || id == "#Salt" || id == "#Pepper"){
             for (let i = 0; i < nodeMap.length; i++) {
                 if (nodeMap[i].name == "position") continue;
                 if (nodeMap[i].name == "material") continue;
@@ -261,9 +347,12 @@ window.onload = () =>{
                 }
                 
             }
+        }
             console.log(hold);
     }
     addListeners();
+
+    
 
     
 
